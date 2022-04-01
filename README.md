@@ -1,1 +1,1 @@
-snippy
+snippy;

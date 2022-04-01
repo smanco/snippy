@@ -1,0 +1,35 @@
+{
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "extends": [
+        "airbnb-base"
+    ],
+    "globals": {
+        "Atomics": "readonly",
+        "SharedArrayBuffer": "readonly"
+    },
+    "parserOptions": {
+        "ecmaVersion": 2018,
+        "sourceType": "module"
+    },
+    "ignorePatterns": [
+        "build-utils/",
+        "node_modules/"
+    ],
+    "rules": {
+        "max-len": [
+            "warn",
+            {
+                "code": 120
+            }
+        ],
+        "no-console": "off",
+        "arrow-body-style": "off",
+        "arrow-parents": "off",
+        "object-curly-newline": "off",
+        "func-names": "off"
+    },
+    "parser": "@babel/eslint-parser"
+}
