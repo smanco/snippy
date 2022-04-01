@@ -9,7 +9,10 @@
     "baseUrl": ".",
     "paths": {
       "@styles/*": ["./src/client/styles/*"],
-      "@ui/*": ["./src/client/layout/ui/*"]
+      "@ui/*": ["./src/client/layout/ui/*"],
+      "@pages/*": ["./src/client/layout/pages/*"],
+      "@components/*": ["./src/client/layout/components/*"],
+      "@atoms/*": ["./src/client/state/atoms/*"]
     }
   }
 }

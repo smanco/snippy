@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 
 const ButtonStyled = styled.button`
     background: ${props => props.theme.primary[500]};
