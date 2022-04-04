@@ -1,9 +1,5 @@
+import { CountStore } from 'src/@types/store';
 import create, { SetState, GetState } from 'zustand';
-
-type CountStore = {
-    count: number,
-    increment: () => void
-};
 
 const useCountStore =
     create <
