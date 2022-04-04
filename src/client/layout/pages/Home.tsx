@@ -18,7 +18,7 @@ const Home = () => {
                     <del>Emotion</del>
                 </li>
                 <li>
-                    <del>Jotai</del>
+                    <del>Zunstand</del>
                 </li>
             </ul>
             <h5>SERVER</h5>
