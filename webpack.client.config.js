@@ -16,9 +16,9 @@ module.exports = {
         alias: {
             '@styles': path.resolve(process.cwd(), './src/client/styles'),
             '@ui': path.resolve(process.cwd(), './src/client/layout/ui'),
-            "@pages": path.resolve(process.cwd(), './src/client/layout/pages'),
-            "@components": path.resolve(process.cwd(), './src/client/layout/components'),
-            "@atoms": path.resolve(process.cwd(), './src/client/state/atoms')
+            '@pages': path.resolve(process.cwd(), './src/client/layout/pages'),
+            '@components': path.resolve(process.cwd(), './src/client/layout/components'),
+            '@store': path.resolve(process.cwd(), './src/client/state/store')
         }
     },
     module: {

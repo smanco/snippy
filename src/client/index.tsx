@@ -8,7 +8,6 @@ const AppWithCallbackAfterRender = () => {
     useEffect(() => {
         console.log('rendered');
     });
-
     return <App />;
 };
 root.render(<AppWithCallbackAfterRender />);

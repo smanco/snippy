@@ -12,7 +12,7 @@
       "@ui/*": ["./src/client/layout/ui/*"],
       "@pages/*": ["./src/client/layout/pages/*"],
       "@components/*": ["./src/client/layout/components/*"],
-      "@atoms/*": ["./src/client/state/atoms/*"]
+      "@store/*": ["./src/client/state/store/*"]
     }
   }
 }
