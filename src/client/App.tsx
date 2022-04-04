@@ -15,7 +15,7 @@ const App: React.FC = () => {
                 <meta name='description' content='Code Snippets home page' />
             </Helmet>
             <ThemeProvider theme={theme}>
-            <Global styles={globalStyles} />
+                <Global styles={globalStyles} />
                 <Container>
                     <Home />
                 </Container>
