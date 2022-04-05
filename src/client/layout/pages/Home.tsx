@@ -23,8 +23,12 @@ const Home = () => {
             </ul>
             <h5>SERVER</h5>
             <ul>
-                <li>Express/Fastify</li>
-                <li>[GraphQL - Apollo]</li>
+                <li>
+                    <del>Fastify</del>
+                </li>
+                <li>
+                    <del>[GraphQL - Apollo]</del>
+                </li>
                 <li>Prisma</li>
                 <li>Postgresql</li>
             </ul>
