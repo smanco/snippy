@@ -16,6 +16,7 @@
   "dependencies": {
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
+    "apollo-datasource": "^3.3.1",
     "apollo-server": "^3.6.7",
     "apollo-server-core": "^3.6.7",
     "apollo-server-fastify": "^3.6.7",
