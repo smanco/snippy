@@ -29,7 +29,8 @@
         "arrow-body-style": "off",
         "arrow-parents": "off",
         "object-curly-newline": "off",
-        "func-names": "off"
+        "func-names": "off",
+        "indent": "off"
     },
     "parser": "@babel/eslint-parser"
 }
