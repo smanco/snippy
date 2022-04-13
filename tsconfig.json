@@ -13,7 +13,8 @@
       "@ui/*": ["./src/client/layout/ui/*"],
       "@pages/*": ["./src/client/layout/pages/*"],
       "@components/*": ["./src/client/layout/components/*"],
-      "@store/*": ["./src/client/state/store/*"]
+      "@store/*": ["./src/client/state/store/*"],
+      "@sb/*": ["./src/client/sb/*"]
     }
   }
 }

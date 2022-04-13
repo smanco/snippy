@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '@ui/ButtonStyled';
 import useCountStore from '@store/useCountStore';
+import Supabase from '@pages/Supabase';
 
 const Home = () => {
     const count = useCountStore(state => state.count);
@@ -10,6 +11,8 @@ const Home = () => {
         <>
             <h1>Snippy</h1>
             <h2>the code snippets manager</h2>
+            <hr />
+            <Supabase />
             <hr />
             <h3>TODO LIST</h3>
             <h5>CLIENT</h5>

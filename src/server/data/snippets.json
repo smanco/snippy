@@ -1,6 +1,0 @@
-{
-    "snippets": [
-        { "title": "Title", "code": "<h1>H1 heading</h1>" },
-        { "title": "Div", "code": "<h1>div</h1>" }
-    ] 
-}

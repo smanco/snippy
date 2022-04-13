@@ -8,6 +8,7 @@ import { globalStyles } from '@styles/theme/default/globalStyles';
 import Home from '@pages/Home';
 
 const App: React.FC = () => {
+    debugger;
     return (
         <>
             <Helmet>

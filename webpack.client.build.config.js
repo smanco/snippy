@@ -19,6 +19,7 @@ module.exports = {
             '@pages': path.resolve(process.cwd(), './src/client/layout/pages'),
             '@components': path.resolve(process.cwd(), './src/client/layout/components'),
             '@store': path.resolve(process.cwd(), './src/client/state/store'),
+            '@sb': path.resolve(process.cwd(), './src/client/sb'),
         },
     },
     module: {
