@@ -9,7 +9,7 @@
     "stats": "webpack --profile --json --config webpack.client.build.config.js > stats.json",
     "analyze": "webpack-bundle-analyzer stats.json",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon"
+    "start:dev": "nodemon --experimental-modules --es-module-specifier-resolution=node"
   },
   "author": "",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "@emotion/react": "^11.8.2",
     "@emotion/styled": "^11.8.1",
     "apollo-datasource": "^3.3.1",
+    "@prisma/client": "^3.12.0",
     "apollo-server": "^3.6.7",
     "apollo-server-core": "^3.6.7",
     "apollo-server-fastify": "^3.6.7",

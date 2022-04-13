@@ -9,7 +9,7 @@ module.exports = {
     entry: './src/client/index.tsx',
     output: {
         path: path.join(__dirname, outputDirectory),
-        filename: 'bundle.js'
+        filename: 'bundle.js',
     },
     resolve: {
         extensions: ['*', '.js', '.jsx', '.ts', '.tsx'],
@@ -18,33 +18,33 @@ module.exports = {
             '@ui': path.resolve(process.cwd(), './src/client/layout/ui'),
             '@pages': path.resolve(process.cwd(), './src/client/layout/pages'),
             '@components': path.resolve(process.cwd(), './src/client/layout/components'),
-            '@store': path.resolve(process.cwd(), './src/client/state/store')
-        }
+            '@store': path.resolve(process.cwd(), './src/client/state/store'),
+        },
     },
     module: {
         rules: [
             {
                 test: /\.(js|jsx)$/,
                 exclude: /node_modules/,
-                use: ['babel-loader']
+                use: ['babel-loader'],
             },
             { test: /\.(ts|tsx)?$/, loader: 'ts-loader' },
             {
                 test: /\.css$/,
-                use: ['style-loader', 'css-loader']
-            }
-        ]
+                use: ['style-loader', 'css-loader'],
+            },
+        ],
     },
     devServer: {
         port: 3000,
-        open: true
+        open: true,
     },
     plugins: [
         new CleanWebpackPlugin({
-            cleanOnceBeforeBuildPatterns: [path.join(__dirname, buildDirectory)]
+            cleanOnceBeforeBuildPatterns: [path.join(__dirname, buildDirectory)],
         }),
         new HtmlWebpackPlugin({
-            template: './public/index.html'
-        })
-    ]
+            template: './public/index.html',
+        }),
+    ],
 };
