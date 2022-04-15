@@ -1,8 +1,9 @@
 import React from 'react';
 import { useState } from 'react';
+import Button from '@ui/ButtonStyled';
 import supabase from '@sb/client';
 
-const Auth = () => {
+const Auth: React.FC = () => {
     const [loading, setLoading] = useState(false);
     const [email, setEmail] = useState('');
 
@@ -38,9 +39,7 @@ const Auth = () => {
                             value={email}
                             onChange={e => setEmail(e.target.value)}
                         />
-                        <button className='button block' aria-live='polite'>
-                            Send magic link
-                        </button>
+                        <Button label='Send magic link' />
                     </form>
                 )}
             </div>

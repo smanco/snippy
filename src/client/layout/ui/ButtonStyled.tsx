@@ -9,6 +9,7 @@ interface ButtonProps {
     /**
      * Optional click handler
      */
+    disabled?: boolean;
     onClick?: () => void;
 }
 

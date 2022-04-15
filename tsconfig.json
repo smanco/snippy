@@ -1,20 +1,21 @@
 {
-  "compilerOptions": {
-    "sourceMap": true,
-    "allowSyntheticDefaultImports": true,
-    "jsx": "react",
-    "allowJs": true,
-    "target": "ES6",
-    "moduleResolution": "node",
-    "baseUrl": ".",
-    "esModuleInterop": true,
-    "paths": {
-      "@styles/*": ["./src/client/styles/*"],
-      "@ui/*": ["./src/client/layout/ui/*"],
-      "@pages/*": ["./src/client/layout/pages/*"],
-      "@components/*": ["./src/client/layout/components/*"],
-      "@store/*": ["./src/client/state/store/*"],
-      "@sb/*": ["./src/client/sb/*"]
+    "compilerOptions": {
+        "sourceMap": true,
+        "allowSyntheticDefaultImports": true,
+        "jsx": "react",
+        "strictNullChecks": true,
+        "allowJs": true,
+        "target": "ES6",
+        "moduleResolution": "node",
+        "baseUrl": ".",
+        "esModuleInterop": true,
+        "paths": {
+            "@styles/*": ["./src/client/styles/*"],
+            "@ui/*": ["./src/client/layout/ui/*"],
+            "@pages/*": ["./src/client/layout/pages/*"],
+            "@components/*": ["./src/client/layout/components/*"],
+            "@store/*": ["./src/client/state/store/*"],
+            "@sb/*": ["./src/client/sb/*"]
+        }
     }
-  }
 }

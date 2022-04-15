@@ -1,12 +1,18 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import supabase from '@sb/client';
+import Button from '@ui/ButtonStyled';
+import { Session, User } from '@supabase/supabase-js';
 
-const Account = ({ session }) => {
-    const [loading, setLoading] = useState(true);
-    const [username, setUsername] = useState(null);
-    const [website, setWebsite] = useState(null);
-    const [avatarUrl, setAvatarUrl] = useState(null);
+interface IAccountProps {
+    session: Session;
+}
+
+const Account: React.FC<IAccountProps> = ({ session }) => {
+    const [loading, setLoading] = useState<boolean>(true);
+    const [username, setUsername] = useState<string | null>(null);
+    const [website, setWebsite] = useState<string | null>(null);
+    const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
 
     useEffect(() => {
         getProfile();
@@ -15,7 +21,7 @@ const Account = ({ session }) => {
     const getProfile = async () => {
         try {
             setLoading(true);
-            const user = supabase.auth.user();
+            const user: User = supabase.auth.user() as User;
 
             let { data, error, status } = await supabase
                 .from('profiles')
@@ -44,7 +50,7 @@ const Account = ({ session }) => {
 
         try {
             setLoading(true);
-            const user = supabase.auth.user();
+            const user: User = supabase.auth.user() as User;
 
             const updates = {
                 id: user.id,
@@ -74,7 +80,7 @@ const Account = ({ session }) => {
                 'Saving ...'
             ) : (
                 <form onSubmit={updateProfile} className='form-widget'>
-                    <div>Email: {session.user.email}</div>
+                    <div>Email: {(session.user || {}).email}</div>
                     <div>
                         <label htmlFor='username'>Name</label>
                         <input
@@ -94,15 +100,11 @@ const Account = ({ session }) => {
                         />
                     </div>
                     <div>
-                        <button className='button block primary' disabled={loading}>
-                            Update profile
-                        </button>
+                        <Button label='Update profile' disabled={loading} />
                     </div>
                 </form>
             )}
-            <button type='button' className='button block' onClick={() => supabase.auth.signOut()}>
-                Sign Out
-            </button>
+            <Button label='Sign Out' onClick={() => supabase.auth.signOut()} />
         </div>
     );
 };
