@@ -1,8 +1,8 @@
-import React from 'react';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import supabase from '@sb/client';
 import Button from '@ui/ButtonStyled';
 import { Session, User } from '@supabase/supabase-js';
+import useProfileStore from '@store/useProfileStore';
 
 interface IAccountProps {
     session: Session;
@@ -10,9 +10,13 @@ interface IAccountProps {
 
 const Account: React.FC<IAccountProps> = ({ session }) => {
     const [loading, setLoading] = useState<boolean>(true);
-    const [username, setUsername] = useState<string | null>(null);
-    const [website, setWebsite] = useState<string | null>(null);
-    const [avatarUrl, setAvatarUrl] = useState<string | null>(null);
+
+    const username = useProfileStore(state => state.username);
+    const setUsername = useProfileStore(state => state.setUsername);
+    const website = useProfileStore(state => state.website);
+    const setWebsite = useProfileStore(state => state.setWebsite);
+    const avatarUrl = useProfileStore(state => state.avatar_url);
+    const setAvatarUrl = useProfileStore(state => state.setAvatarUrl);
 
     useEffect(() => {
         getProfile();
@@ -61,7 +65,7 @@ const Account: React.FC<IAccountProps> = ({ session }) => {
             };
 
             let { error } = await supabase.from('profiles').upsert(updates, {
-                returning: 'minimal', // Don't return the value after inserting
+                returning: 'minimal',
             });
 
             if (error) {

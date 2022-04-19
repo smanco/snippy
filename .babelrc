@@ -1,12 +1,21 @@
 {
-  "plugins": [
-    ["@babel/plugin-proposal-decorators", { "legacy": true }],
-    "@babel/plugin-proposal-function-sent",
-    "@babel/plugin-proposal-export-namespace-from",
-    "@babel/plugin-proposal-numeric-separator",
-    "@babel/plugin-proposal-throw-expressions",
-    "babel-plugin-styled-components",
-    ["@babel/plugin-proposal-class-properties", { "loose": false }]
-  ],
-  "presets": ["@babel/env", "@babel/preset-react"]
+    "plugins": [
+        [
+            "prismjs",
+            {
+                "languages": ["javascript", "css", "html"],
+                "plugins": ["line-numbers", "show-language"],
+                "theme": "okaidia",
+                "css": true
+            }
+        ],
+        ["@babel/plugin-proposal-decorators", { "legacy": true }],
+        "@babel/plugin-proposal-function-sent",
+        "@babel/plugin-proposal-export-namespace-from",
+        "@babel/plugin-proposal-numeric-separator",
+        "@babel/plugin-proposal-throw-expressions",
+        "babel-plugin-styled-components",
+        ["@babel/plugin-proposal-class-properties", { "loose": false }]
+    ],
+    "presets": ["@babel/env", "@babel/preset-react"]
 }

@@ -1,12 +1,14 @@
-import { ProfileStore } from 'src/@types/store';
+import { ProfileStore, Snippet } from 'src/@types/store';
 import create, { SetState, GetState } from 'zustand';
+import { devtools, subscribeWithSelector } from 'zustand/middleware';
 import { Session } from '@supabase/supabase-js';
 
-const useProfileStore = create<ProfileStore>((set: SetState<ProfileStore>, get: GetState<ProfileStore>) => ({
+const profileStore = (set: SetState<ProfileStore>, get: GetState<ProfileStore>) => ({
     session: null,
     username: null,
     avatar_url: null,
     website: null,
+    snippetList: null,
     setSession: (session: Session | null): void => {
         set({ session });
     },
@@ -19,6 +21,11 @@ const useProfileStore = create<ProfileStore>((set: SetState<ProfileStore>, get: 
     setWebsite: (website: string | null): void => {
         set({ website });
     },
-}));
+    setSnippetList: (snippetList: Snippet[] | null): void => {
+        set({ snippetList });
+    },
+});
+
+const useProfileStore = create<ProfileStore>(devtools(profileStore));
 
 export default useProfileStore;
