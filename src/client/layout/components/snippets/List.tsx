@@ -3,7 +3,6 @@ import { User } from '@supabase/supabase-js';
 import supabase from '@sb/client';
 import useProfileStore from '@store/useProfileStore';
 import { Snippet } from 'src/@types/store';
-import Prism from 'prismjs';
 
 const List: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -32,7 +31,6 @@ const List: React.FC = () => {
 
             if (data) {
                 setSnippetList(data);
-                Prism.highlightAll();
             }
         } catch (error) {
             alert(error.message);
@@ -48,8 +46,8 @@ const List: React.FC = () => {
                 <div key={`snippet_${index}`}>
                     <hr />
                     <h4>{snippet.title}</h4>
-                    <pre className='line-numbers'>
-                        <code className='language-html'>{snippet.code}</code>
+                    <pre>
+                        <code>{snippet.code}</code>
                     </pre>
                 </div>
             );
