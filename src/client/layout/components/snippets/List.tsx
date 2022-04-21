@@ -3,6 +3,7 @@ import { User } from '@supabase/supabase-js';
 import supabase from '@sb/client';
 import useProfileStore from '@store/useProfileStore';
 import { Snippet } from 'src/@types/store';
+import ListStyled from '@styles/components/snippets/ListStyled';
 
 const List: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -54,11 +55,10 @@ const List: React.FC = () => {
         });
 
     return (
-        <>
+        <ListStyled>
             <h3>Snippets</h3>
             {loading ? 'Saving ...' : getList}
-            <hr />
-        </>
+        </ListStyled>
     );
 };
 

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Suspense } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
 import { Helmet } from 'react-helmet';
 import Container from '@styles/ContainerStyle';
@@ -6,21 +7,32 @@ import { theme } from '@styles/theme/default';
 import { Global } from '@emotion/react';
 import { globalStyles } from '@styles/theme/default/globalStyles';
 import Home from '@pages/Home';
+import Register from '@pages/Register';
+import Layout from '@components/Layout';
 
 const App: React.FC = () => {
     return (
-        <>
-            <Helmet>
-                <title>Code Snippets - Home page</title>
-                <meta name='description' content='Code Snippets home page' />
-            </Helmet>
+        <Suspense fallback={<div>LOADING...</div>}>
             <ThemeProvider theme={theme}>
                 <Global styles={globalStyles} />
                 <Container>
-                    <Home />
+                    <Routes>
+                        <Route path='/' element={<Layout />}>
+                            <Route index element={<Home />} />
+                            <Route path='register' element={<Register />} />
+                            <Route
+                                path='*'
+                                element={
+                                    <main style={{ padding: '1rem' }}>
+                                        <p>There's nothing here!</p>
+                                    </main>
+                                }
+                            />
+                        </Route>
+                    </Routes>
                 </Container>
             </ThemeProvider>
-        </>
+        </Suspense>
     );
 };
 

@@ -1,18 +1,29 @@
-import React from 'react';
-import Supabase from '@components/supabase';
+import React, { useEffect } from 'react';
+import User from '@components/user';
 import useProfileStore from '@store/useProfileStore';
-import List from '@components/snippets/List';
+import { Helmet } from 'react-helmet';
+import Auth from '@components/user/Auth';
+import Content from '@components/snippets/Content';
+import supabase from '@sb/client';
 
 const Home: React.FC = () => {
     const session = useProfileStore(state => state.session);
+    const setSession = useProfileStore(state => state.setSession);
+
+    useEffect(() => {
+        setSession(supabase.auth.session());
+        supabase.auth.onAuthStateChange((_event, session) => {
+            setSession(session);
+        });
+    }, []);
+
     return (
         <>
-            <h1>Snippy</h1>
-            <h2>the code snippets manager</h2>
-            <hr />
-            <Supabase />
-            <hr />
-            {session && session.user && <List />}
+            <Helmet>
+                <title>Code Snippets - Home page</title>
+                <meta name='description' content='Code Snippets home page' />
+            </Helmet>
+            {!session || !session.user ? <Auth /> : <Content />}
         </>
     );
 };

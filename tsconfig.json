@@ -17,5 +17,6 @@
             "@store/*": ["./src/client/state/store/*"],
             "@sb/*": ["./src/client/sb/*"]
         }
-    }
+    },
+    "exclude": ["node_modules", "public", "supabase"]
 }

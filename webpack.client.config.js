@@ -26,10 +26,10 @@ module.exports = {
         rules: [
             {
                 test: /\.(js|jsx)$/,
-                exclude: /node_modules/,
+                exclude: ['/node_modules/', '/supabase/'],
                 use: ['babel-loader'],
             },
-            { test: /\.(ts|tsx)?$/, loader: 'ts-loader' },
+            { test: /\.(ts|tsx)?$/, exclude: ['/node_modules/', '/supabase/'], loader: 'ts-loader' },
             {
                 test: /\.css$/,
                 use: ['style-loader', 'css-loader'],
@@ -37,8 +37,11 @@ module.exports = {
         ],
     },
     devServer: {
-        port: 3000,
+        port: 3001,
         open: true,
+        static: path.resolve(__dirname, './dist'),
+        hot: true,
+        historyApiFallback: true,
     },
     plugins: [
         new CleanWebpackPlugin({

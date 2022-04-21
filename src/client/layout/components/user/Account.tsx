@@ -1,14 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import supabase from '@sb/client';
 import Button from '@ui/ButtonStyled';
-import { Session, User } from '@supabase/supabase-js';
+import { User } from '@supabase/supabase-js';
 import useProfileStore from '@store/useProfileStore';
+import LabelStyled from '@styles/components/user/LabelStyled';
+import UserFormStyled from '@styles/components/user/UserFormStyled';
+import InputStyled from '@styles/components/user/InputStyled';
 
-interface IAccountProps {
-    session: Session;
-}
-
-const Account: React.FC<IAccountProps> = ({ session }) => {
+const Account: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
 
     const username = useProfileStore(state => state.username);
@@ -17,6 +16,7 @@ const Account: React.FC<IAccountProps> = ({ session }) => {
     const setWebsite = useProfileStore(state => state.setWebsite);
     const avatarUrl = useProfileStore(state => state.avatar_url);
     const setAvatarUrl = useProfileStore(state => state.setAvatarUrl);
+    const session = useProfileStore(state => state.session);
 
     useEffect(() => {
         getProfile();
@@ -79,36 +79,37 @@ const Account: React.FC<IAccountProps> = ({ session }) => {
     };
 
     return (
-        <div aria-live='polite'>
-            {loading ? (
-                'Saving ...'
-            ) : (
-                <form onSubmit={updateProfile} className='form-widget'>
-                    <div>Email: {(session.user || {}).email}</div>
-                    <div>
-                        <label htmlFor='username'>Name</label>
-                        <input
-                            id='username'
-                            type='text'
-                            value={username || ''}
-                            onChange={e => setUsername(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label htmlFor='website'>Website</label>
-                        <input
-                            id='website'
-                            type='url'
-                            value={website || ''}
-                            onChange={e => setWebsite(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <Button label='Update profile' disabled={loading} />
-                    </div>
-                </form>
-            )}
-            <Button label='Sign Out' onClick={() => supabase.auth.signOut()} />
+        <div>
+            {loading
+                ? 'Saving ...'
+                : session && (
+                      <UserFormStyled onSubmit={updateProfile}>
+                          <div>
+                              Email:
+                              <br />
+                              {(session.user || {}).email}
+                          </div>
+                          <LabelStyled htmlFor='username'>Name</LabelStyled>
+                          <InputStyled
+                              id='username'
+                              type='text'
+                              value={username || ''}
+                              onChange={e => setUsername(e.target.value)}
+                          />
+                          <br />
+                          <LabelStyled htmlFor='username'>Website</LabelStyled>
+                          <InputStyled
+                              id='website'
+                              type='url'
+                              value={website || ''}
+                              onChange={e => setWebsite(e.target.value)}
+                          />
+                          <br />
+                          <Button label='Update profile' disabled={loading} />
+                          <br />
+                          <Button label='Sign Out' onClick={() => supabase.auth.signOut()} />
+                      </UserFormStyled>
+                  )}
         </div>
     );
 };

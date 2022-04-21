@@ -17,7 +17,7 @@
             "jsx": true
         }
     },
-    "ignorePatterns": ["build-utils/", "node_modules/"],
+    "ignorePatterns": ["build-utils/", "node_modules/", "supabase/"],
     "rules": {
         "max-len": [
             "warn",

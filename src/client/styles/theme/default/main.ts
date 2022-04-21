@@ -1,6 +1,6 @@
 const main = {
-    background: '#FFFFFF',
-    color: '#000000'
+    background: '#080710',
+    color: '#ffffff',
 };
 
 export default main;
