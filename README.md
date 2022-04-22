@@ -25,3 +25,6 @@ Now visit http://localhost:3000 to start using Supabase Studio.
 
 Follow instructions at this url:
 https://supabase.com/docs/guides/hosting/docker
+
+Fix email redirect on registration
+https://github.com/supabase/supabase/discussions/4381

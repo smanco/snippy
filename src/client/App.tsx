@@ -9,6 +9,7 @@ import { globalStyles } from '@styles/theme/default/globalStyles';
 import Home from '@pages/Home';
 import Register from '@pages/Register';
 import Layout from '@components/Layout';
+import NotFoundPage from '@pages/NotFoundPage';
 
 const App: React.FC = () => {
     return (
@@ -20,14 +21,7 @@ const App: React.FC = () => {
                         <Route path='/' element={<Layout />}>
                             <Route index element={<Home />} />
                             <Route path='register' element={<Register />} />
-                            <Route
-                                path='*'
-                                element={
-                                    <main style={{ padding: '1rem' }}>
-                                        <p>There's nothing here!</p>
-                                    </main>
-                                }
-                            />
+                            <Route path='*' element={<NotFoundPage />} />
                         </Route>
                     </Routes>
                 </Container>
