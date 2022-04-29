@@ -5,6 +5,7 @@ import { Helmet } from 'react-helmet';
 import Auth from '@components/user/Auth';
 import Content from '@components/snippets/Content';
 import supabase from '@sb/client';
+import Spinner from '@components/common/Spinner';
 
 const Home: React.FC = () => {
     const session = useProfileStore(state => state.session);

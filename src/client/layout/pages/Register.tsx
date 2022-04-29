@@ -8,6 +8,7 @@ import LabelStyled from '@styles/components/user/LabelStyled';
 import InputStyled from '@styles/components/user/InputStyled';
 import AuthTitleStyled from '@styles/components/user/AuthTitleStyled';
 import { Helmet } from 'react-helmet';
+import Spinner from '@components/common/Spinner';
 
 const Register: React.FC = () => {
     const [loading, setLoading] = useState(false);
@@ -21,9 +22,9 @@ const Register: React.FC = () => {
             setLoading(true);
             const { error } = await supabase.auth.signUp({ email, password });
             if (error) throw error;
-            alert('Check your email for the login link!');
+            console.error('Check your email for the login link!');
         } catch (error) {
-            alert(error.error_description || error.message);
+            console.error(error.error_description || error.message);
         } finally {
             setLoading(false);
         }
@@ -36,7 +37,7 @@ const Register: React.FC = () => {
                 <meta name='description' content='Code Snippets registration page' />
             </Helmet>
             {loading ? (
-                '...'
+                <Spinner />
             ) : (
                 <AuthFormStyled onSubmit={handleLogin}>
                     <AuthTitleStyled>Register Here</AuthTitleStyled>
@@ -60,7 +61,7 @@ const Register: React.FC = () => {
                     <br />
                     <Button label='Register' />
 
-                    <Link to='/'>Home</Link>
+                    <Link to='/'>Login</Link>
                 </AuthFormStyled>
             )}
         </div>

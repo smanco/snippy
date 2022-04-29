@@ -6,6 +6,7 @@ import useProfileStore from '@store/useProfileStore';
 import LabelStyled from '@styles/components/user/LabelStyled';
 import UserFormStyled from '@styles/components/user/UserFormStyled';
 import InputStyled from '@styles/components/user/InputStyled';
+import Spinner from '@components/common/Spinner';
 
 const Account: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -43,7 +44,7 @@ const Account: React.FC = () => {
                 setAvatarUrl(data.avatar_url);
             }
         } catch (error) {
-            alert(error.message);
+            console.error(error.message);
         } finally {
             setLoading(false);
         }
@@ -72,7 +73,7 @@ const Account: React.FC = () => {
                 throw error;
             }
         } catch (error) {
-            alert(error.message);
+            console.error(error.message);
         } finally {
             setLoading(false);
         }
@@ -80,36 +81,38 @@ const Account: React.FC = () => {
 
     return (
         <div>
-            {loading
-                ? 'Saving ...'
-                : session && (
-                      <UserFormStyled onSubmit={updateProfile}>
-                          <div>
-                              Email:
-                              <br />
-                              {(session.user || {}).email}
-                          </div>
-                          <LabelStyled htmlFor='username'>Name</LabelStyled>
-                          <InputStyled
-                              id='username'
-                              type='text'
-                              value={username || ''}
-                              onChange={e => setUsername(e.target.value)}
-                          />
-                          <br />
-                          <LabelStyled htmlFor='username'>Website</LabelStyled>
-                          <InputStyled
-                              id='website'
-                              type='url'
-                              value={website || ''}
-                              onChange={e => setWebsite(e.target.value)}
-                          />
-                          <br />
-                          <Button label='Update profile' disabled={loading} />
-                          <br />
-                          <Button label='Sign Out' onClick={() => supabase.auth.signOut()} />
-                      </UserFormStyled>
-                  )}
+            {loading ? (
+                <Spinner />
+            ) : (
+                session && (
+                    <UserFormStyled onSubmit={updateProfile}>
+                        <div>
+                            Email:
+                            <br />
+                            {(session.user || {}).email}
+                        </div>
+                        <LabelStyled htmlFor='username'>Name</LabelStyled>
+                        <InputStyled
+                            id='username'
+                            type='text'
+                            value={username || ''}
+                            onChange={e => setUsername(e.target.value)}
+                        />
+                        <br />
+                        <LabelStyled htmlFor='username'>Website</LabelStyled>
+                        <InputStyled
+                            id='website'
+                            type='url'
+                            value={website || ''}
+                            onChange={e => setWebsite(e.target.value)}
+                        />
+                        <br />
+                        <Button label='Update profile' disabled={loading} />
+                        <br />
+                        <Button label='Sign Out' onClick={() => supabase.auth.signOut()} />
+                    </UserFormStyled>
+                )
+            )}
         </div>
     );
 };

@@ -1,7 +1,6 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from '@emotion/react';
-import { Helmet } from 'react-helmet';
 import Container from '@styles/ContainerStyle';
 import { theme } from '@styles/theme/default';
 import { Global } from '@emotion/react';
@@ -10,10 +9,11 @@ import Home from '@pages/Home';
 import Register from '@pages/Register';
 import Layout from '@components/Layout';
 import NotFoundPage from '@pages/NotFoundPage';
+import Spinner from '@components/common/Spinner';
 
-const App: React.FC = () => {
+const App = () => {
     return (
-        <Suspense fallback={<div>LOADING...</div>}>
+        <Suspense fallback={<Spinner />}>
             <ThemeProvider theme={theme}>
                 <Global styles={globalStyles} />
                 <Container>

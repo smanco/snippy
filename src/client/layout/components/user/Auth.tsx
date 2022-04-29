@@ -7,6 +7,7 @@ import AuthFormStyled from '@styles/components/user/AuthFormStyled';
 import LabelStyled from '@styles/components/user/LabelStyled';
 import InputStyled from '@styles/components/user/InputStyled';
 import AuthTitleStyled from '@styles/components/user/AuthTitleStyled';
+import Spinner from '@components/common/Spinner';
 
 const Auth: React.FC = () => {
     const [loading, setLoading] = useState(false);
@@ -21,16 +22,15 @@ const Auth: React.FC = () => {
             const { error } = await supabase.auth.signIn({ email, password });
             if (error) throw error;
         } catch (error) {
-            alert(error.error_description || error.message);
+            console.error(error.error_description || error.message);
         } finally {
             setLoading(false);
         }
     };
-
     return (
         <div>
             {loading ? (
-                '...'
+                <Spinner />
             ) : (
                 <AuthFormStyled onSubmit={handleLogin}>
                     <AuthTitleStyled>Login Here</AuthTitleStyled>
@@ -48,6 +48,7 @@ const Auth: React.FC = () => {
                         id='password'
                         type='password'
                         placeholder='Password'
+                        autoComplete='password'
                         value={password}
                         onChange={e => setPassword(e.target.value)}
                     />

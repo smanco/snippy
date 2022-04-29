@@ -4,6 +4,7 @@ import supabase from '@sb/client';
 import useProfileStore from '@store/useProfileStore';
 import { Snippet } from 'src/@types/store';
 import ListStyled from '@styles/components/snippets/ListStyled';
+import Spinner from '@components/common/Spinner';
 
 const List: React.FC = () => {
     const [loading, setLoading] = useState<boolean>(true);
@@ -34,7 +35,7 @@ const List: React.FC = () => {
                 setSnippetList(data);
             }
         } catch (error) {
-            alert(error.message);
+            console.error(error.message);
         } finally {
             setLoading(false);
         }
@@ -57,7 +58,7 @@ const List: React.FC = () => {
     return (
         <ListStyled>
             <h3>Snippets</h3>
-            {loading ? 'Saving ...' : getList}
+            {loading ? <Spinner /> : getList}
         </ListStyled>
     );
 };

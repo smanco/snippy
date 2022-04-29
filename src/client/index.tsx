@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { StrictMode, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 import App from './App';
@@ -8,7 +8,9 @@ const root = createRoot(container);
 const AppWithCallbackAfterRender = () => {
     return (
         <Router>
-            <App />
+            <StrictMode>
+                <App />
+            </StrictMode>
         </Router>
     );
 };
